@@ -5,7 +5,6 @@ use warnings;
 use 5.008_001;
 
 use Getopt::Long qw(:config posix_default no_ignore_case no_ignore_case_always);
-use IO::Socket::INET;
 use List::Util qw(first);
 
 use App::Memcached::Tool;
@@ -73,7 +72,9 @@ sub run {
     my $self = shift;
     debug "[start] $self->{mode} $self->{addr}";
     my $method = $self->{mode};
-    unless ($self->$method) {
+    my $ret    = $self->$method;
+    $self->{ds}->disconnect;
+    unless ($ret) {
         warn "Command '$self->{mode}' seems failed. Set '--debug' option if you want to see debug logs.";
         exit 1;
     }

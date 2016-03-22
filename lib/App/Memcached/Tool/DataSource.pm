@@ -33,6 +33,12 @@ sub connect {
     return $class->new(socket => $socket);
 }
 
+sub disconnect {
+    my $self = shift;
+    $self->{socket}->close or confess "Failed to close connection!";
+    undef $self->{socket};
+}
+
 sub get {
     my $self = shift;
     my $key  = shift;
