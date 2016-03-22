@@ -2,7 +2,12 @@ Revision history for Perl extension App-Memcached-Tool
 
 {{$NEXT}}
 
+v0.9.1 2016-03-22T16:58:25Z
+
+    - Update documentation.
+
 v0.9.0 2016-03-22T16:45:12Z
 
-    - original version
+    - Ported from memcached/memcached-tool
+      https://github.com/memcached/memcached.
 

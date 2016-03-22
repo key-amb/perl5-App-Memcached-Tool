@@ -54,15 +54,15 @@
    "release_status" : "unstable",
    "resources" : {
       "bugtracker" : {
-         "web" : "https://github.com/key-amb/perl5-App-Memcached-Monitor/issues"
+         "web" : "https://github.com/key-amb/perl5-App-Memcached-Tool/issues"
       },
-      "homepage" : "https://github.com/key-amb/perl5-App-Memcached-Monitor",
+      "homepage" : "https://github.com/key-amb/perl5-App-Memcached-Tool",
       "repository" : {
          "type" : "git",
-         "url" : "git://github.com/key-amb/perl5-App-Memcached-Monitor.git",
-         "web" : "https://github.com/key-amb/perl5-App-Memcached-Monitor"
+         "url" : "git://github.com/key-amb/perl5-App-Memcached-Tool.git",
+         "web" : "https://github.com/key-amb/perl5-App-Memcached-Tool"
       }
    },
-   "version" : "v0.9.0",
+   "version" : "v0.9.1",
    "x_authority" : "cpan:KEYAMB"
 }

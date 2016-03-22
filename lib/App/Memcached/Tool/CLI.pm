@@ -12,7 +12,7 @@ use App::Memcached::Tool;
 use App::Memcached::Tool::DataSource;
 use App::Memcached::Tool::Util ':all';
 
-use version; our $VERSION = 'v0.9.0';
+use version; our $VERSION = 'v0.9.1';
 
 my @MODES        = qw(display dump stats settings sizes help man);
 my $DEFAULT_MODE = $MODES[0];
