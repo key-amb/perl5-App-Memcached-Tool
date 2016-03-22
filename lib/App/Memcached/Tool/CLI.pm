@@ -84,7 +84,7 @@ sub display {
     my $self = shift;
 
     my %stats;
-    my $max;
+    my $max = 1;
 
     my $resp_items = $self->{ds}->query('stats items');
     for my $line (@$resp_items) {
