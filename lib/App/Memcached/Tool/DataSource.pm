@@ -86,15 +86,19 @@ __END__
 
 =head1 NAME
 
-App::Memcached::Tool::DataSource - It's new $module
+App::Memcached::Tool::DataSource - Interface for Memcached
 
 =head1 SYNOPSIS
 
     use App::Memcached::Tool::DataSource;
+    my $ds = App::Memcached::Tool::DataSource->connect(
+            $params{addr}, timeout => $params{timeout}
+        );
+    my $stats = $ds->query('stats');
 
 =head1 DESCRIPTION
 
-App::Memcached::Tool::DataSource is ...
+App::Memcached::Tool::DataSource is interface module for Memcached.
 
 =head1 LICENSE
 

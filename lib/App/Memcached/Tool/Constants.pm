@@ -26,15 +26,17 @@ __END__
 
 =head1 NAME
 
-App::Memcached::Tool::Constants - It's new $module
+App::Memcached::Tool::Constants - Provides constants
 
 =head1 SYNOPSIS
 
-    use App::Memcached::Tool::Constants;
+    use App::Memcached::Tool::Constants ':all';
+    my $addr = DEFAULT_ADDR();
+    my $addr = $hostname . ':' . $DEFAULT_PORT;
 
 =head1 DESCRIPTION
 
-App::Memcached::Tool::Constants is ...
+Provides constants for other modules.
 
 =head1 LICENSE
 

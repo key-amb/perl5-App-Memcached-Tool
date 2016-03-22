@@ -63,15 +63,20 @@ __END__
 
 =head1 NAME
 
-App::Memcached::Tool::Util - It's new $module
+App::Memcached::Tool::Util - Utility function set
 
 =head1 SYNOPSIS
 
-    use App::Memcached::Tool::Util;
+    use App::Memcached::Tool::Util ':all';
+    if (looks_like_addr($given)) {
+        ...
+    }
+    my $addr = is_unixsocket($given) ? $given : create_addr($hostname);
+    debug "foo";
 
 =head1 DESCRIPTION
 
-App::Memcached::Tool::Util is ...
+App::Memcached::Tool::Util provides utility functions for other modules.
 
 =head1 LICENSE
 

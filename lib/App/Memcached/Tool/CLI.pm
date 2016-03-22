@@ -218,15 +218,21 @@ __END__
 
 =head1 NAME
 
-App::Memcached::Tool::CLI - It's new $module
+App::Memcached::Tool::CLI - CLI module for L<memcached-tool>
 
 =head1 SYNOPSIS
 
     use App::Memcached::Tool::CLI;
+    my $params = App::Memcached::Tool::CLI->parse_args;
+    App::Memcached::Tool::CLI->new(%$params)->run
 
 =head1 DESCRIPTION
 
-App::Memcached::Tool::CLI is ...
+App::Memcached::Tool::CLI executes procedure of L<memcached-tool>.
+
+=head1 SEE ALSO
+
+L<memcached-tool>
 
 =head1 LICENSE
 
