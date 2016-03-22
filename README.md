@@ -1,14 +1,14 @@
 # NAME
 
-App::Memcached::Monitor - It's new $module
+App::Memcached::Tool - It's new $module
 
 # SYNOPSIS
 
-    use App::Memcached::Monitor;
+    use App::Memcached::Tool;
 
 # DESCRIPTION
 
-App::Memcached::Monitor is ...
+App::Memcached::Tool is ...
 
 # LICENSE
 

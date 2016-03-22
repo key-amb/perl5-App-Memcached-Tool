@@ -1,4 +1,4 @@
-package App::Memcached::Monitor;
+package App::Memcached::Tool;
 use 5.008001;
 use strict;
 use warnings;
@@ -14,15 +14,15 @@ __END__
 
 =head1 NAME
 
-App::Memcached::Monitor - It's new $module
+App::Memcached::Tool - It's new $module
 
 =head1 SYNOPSIS
 
-    use App::Memcached::Monitor;
+    use App::Memcached::Tool;
 
 =head1 DESCRIPTION
 
-App::Memcached::Monitor is ...
+App::Memcached::Tool is ...
 
 =head1 LICENSE
 

@@ -1,4 +1,4 @@
-package App::Memcached::Monitor::DataSource;
+package App::Memcached::Tool::DataSource;
 
 use strict;
 use warnings;
@@ -7,7 +7,7 @@ use 5.008_001;
 use Carp;
 use IO::Socket;
 
-use App::Memcached::Monitor::Util qw(is_unixsocket debug);
+use App::Memcached::Tool::Util qw(is_unixsocket debug);
 
 sub new {
     my $class = shift;
@@ -86,15 +86,15 @@ __END__
 
 =head1 NAME
 
-App::Memcached::Monitor::DataSource - It's new $module
+App::Memcached::Tool::DataSource - It's new $module
 
 =head1 SYNOPSIS
 
-    use App::Memcached::Monitor::DataSource;
+    use App::Memcached::Tool::DataSource;
 
 =head1 DESCRIPTION
 
-App::Memcached::Monitor::DataSource is ...
+App::Memcached::Tool::DataSource is ...
 
 =head1 LICENSE
 
