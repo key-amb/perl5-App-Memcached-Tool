@@ -1,5 +1,5 @@
 {
-   "abstract" : "It's new $module",
+   "abstract" : "A porting of L<memcached/memcached-tool|https://github.com/memcached/memcached/blob/master/scripts/memcached-tool>",
    "author" : [
       "YASUTAKE Kiyoshi <yasutake.kiyoshi@gmail.com>"
    ],
@@ -52,6 +52,17 @@
       }
    },
    "release_status" : "unstable",
-   "version" : "0.01",
+   "resources" : {
+      "bugtracker" : {
+         "web" : "https://github.com/key-amb/perl5-App-Memcached-Monitor/issues"
+      },
+      "homepage" : "https://github.com/key-amb/perl5-App-Memcached-Monitor",
+      "repository" : {
+         "type" : "git",
+         "url" : "git://github.com/key-amb/perl5-App-Memcached-Monitor.git",
+         "web" : "https://github.com/key-amb/perl5-App-Memcached-Monitor"
+      }
+   },
+   "version" : "v0.9.0",
    "x_authority" : "cpan:KEYAMB"
 }

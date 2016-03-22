@@ -1,6 +1,6 @@
 # NAME
 
-App::Memcached::Tool - It's new $module
+App::Memcached::Tool - A porting of [memcached/memcached-tool](https://github.com/memcached/memcached/blob/master/scripts/memcached-tool)
 
 # SYNOPSIS
 
@@ -8,7 +8,17 @@ App::Memcached::Tool - It's new $module
 
 # DESCRIPTION
 
-App::Memcached::Tool is ...
+This package provides the same feature with
+[memcached/memcached-tool](https://github.com/memcached/memcached/blob/master/scripts/memcached-tool).
+
+A common commandline tool for __memcached__.
+
+See [memcached-tool](https://metacpan.org/pod/memcached-tool) for more information.
+
+# SEE ALSO
+
+[memcached-tool](https://metacpan.org/pod/memcached-tool),
+[http://www.memcached.org/](http://www.memcached.org/)
 
 # LICENSE
 
