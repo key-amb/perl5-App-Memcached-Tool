@@ -8,13 +8,11 @@ use Getopt::Long qw(:config posix_default no_ignore_case no_ignore_case_always);
 use List::Util qw(first);
 
 use App::Memcached::Tool;
+use App::Memcached::Tool::Constants ':all';
 use App::Memcached::Tool::DataSource;
 use App::Memcached::Tool::Util ':all';
 
 use version; our $VERSION = 'v0.9.2';
-
-my @MODES        = qw(display dump stats settings sizes help man);
-my $DEFAULT_MODE = $MODES[0];
 
 sub new {
     my $class  = shift;
@@ -34,7 +32,7 @@ sub parse_args {
     if (defined $ARGV[0] and looks_like_addr($ARGV[0])) {
         $params{addr} = shift @ARGV;
     }
-    if (defined $ARGV[0] and first { $_ eq $ARGV[0] } @MODES) {
+    if (defined $ARGV[0] and first { $_ eq $ARGV[0] } MODES()) {
         $params{mode} = shift @ARGV;
     }
 
@@ -56,11 +54,11 @@ sub parse_args {
 
     %params = (
         addr    => create_addr($params{addr} || $opts{addr}),
-        mode    => $params{mode} || $opts{mode} || $DEFAULT_MODE,
+        mode    => $params{mode} || $opts{mode} || DEFAULT_MODE(),
         timeout => $opts{timeout},
         debug   => $opts{debug},
     );
-    unless (first { $_ eq $params{mode} } @MODES) {
+    unless (first { $_ eq $params{mode} } MODES()) {
         warn "Invalid mode! $params{mode}";
         delete $params{mode};
     }

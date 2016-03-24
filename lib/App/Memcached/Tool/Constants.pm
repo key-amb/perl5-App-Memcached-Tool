@@ -9,6 +9,8 @@ use Exporter 'import';
 our @EXPORT_OK = qw(
     DEFAULT_PORT
     DEFAULT_ADDR
+    MODES
+    DEFAULT_MODE
 );
 our %EXPORT_TAGS = (all => \@EXPORT_OK);
 
@@ -18,6 +20,10 @@ my $DEFAULT_PORT = 11211;
 
 sub DEFAULT_PORT { $DEFAULT_PORT }
 sub DEFAULT_ADDR { '127.0.0.1:' . $DEFAULT_PORT }
+
+my @MODES = qw(display dump stats settings sizes help man);
+sub MODES { @MODES }
+sub DEFAULT_MODE { $MODES[0] }
 
 1;
 __END__

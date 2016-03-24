@@ -5,6 +5,7 @@ use warnings;
 use 5.008_001;
 
 use Exporter 'import';
+use List::Util qw(first);
 use POSIX 'strftime';
 use Time::HiRes 'gettimeofday';
 
@@ -26,6 +27,9 @@ sub looks_like_addr {
     return $string if is_unixsocket($string);
 
     my $hostname = $string;
+    if (first { $_ eq $string } MODES()) {
+        return;
+    }
     if ($hostname =~ m/([^\s:]+):\d+/) {
         $hostname = $1;
     }
