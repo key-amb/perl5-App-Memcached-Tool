@@ -126,35 +126,37 @@ sub display {
 sub stats {
     my $self = shift;
     my $response = $self->{ds}->query('stats');
-    my %stats;
-    for my $line (@$response) {
-        if ($line =~ m/^STAT\s+(\S*)\s+(.*)/) {
-            $stats{$1} = $2;
-        }
-    }
-    print "# stats - $self->{addr}\n";
-    printf "#%23s  %16s\n", 'Field', 'Value';
-    for my $field (sort {$a cmp $b} (keys %stats)) {
-        printf ("%24s  %16s\n", $field, $stats{$field});
-    }
+    _print_stats_of_response("stats - $self->{addr}", @$response);
     return 1;
 }
 
 sub settings {
     my $self = shift;
     my $response = $self->{ds}->query('stats settings');
-    my %stats;
-    for my $line (@$response) {
-        if ($line =~ m/^STAT\s+(\S*)\s+(.*)/) {
-            $stats{$1} = $2;
-        }
-    }
-    print "# stats settings - $self->{addr}\n";
-    printf "#%23s  %16s\n", 'Field', 'Value';
-    for my $field (sort {$a cmp $b} (keys %stats)) {
-        printf ("%24s  %16s\n", $field, $stats{$field});
-    }
+    _print_stats_of_response("stats settings - $self->{addr}", @$response);
     return 1;
+}
+
+sub _print_stats_of_response {
+    my $title  = shift;
+    my @lines  = @_;
+
+    my %stats;
+    my ($max_key_l, $max_val_l) = (0, 0);
+
+    for my $line (@lines) {
+        next if ($line !~ m/^STAT\s+(\S*)\s+(.*)/);
+        my ($key, $value) = ($1, $2);
+        if (length $key   > $max_key_l) { $max_key_l = length $key; }
+        if (length $value > $max_val_l) { $max_val_l = length $value; }
+        $stats{$key} = $value;
+    }
+
+    print  "# $title\n";
+    printf "#%${max_key_l}s  %${max_val_l}s\n", 'Field', 'Value';
+    for my $field (sort {$a cmp $b} (keys %stats)) {
+        printf (" %${max_key_l}s  %${max_val_l}s\n", $field, $stats{$field});
+    }
 }
 
 sub dump {
