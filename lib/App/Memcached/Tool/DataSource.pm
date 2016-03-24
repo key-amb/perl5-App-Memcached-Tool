@@ -48,15 +48,17 @@ sub get {
 
     my %data = (key => $key);
     my $response = <$socket>;
-    if ($response =~ m/VALUE \S+ (\d+) (\d+)/) {
+    if ($response =~ m/^VALUE \S+ (\d+) (\d+)/) {
         $data{flags}  = $1;
         $data{length} = $2;
         read $socket, $response, $data{length};
         $data{value} = $response;
 
         while ($response !~ m/^END/) { $response = <$socket>; }
+    } elsif ($response =~ m/^END/) {
+        warn qq{Item Not found for KEY "$key"};
     } else {
-        warn "KEY $key not found in $response";
+        warn qq{Unknown response for KEY "$key" - $response};
     }
 
     return \%data;
@@ -72,7 +74,7 @@ sub query {
     my @response;
     while (<$socket>) {
         last if m/^END/;
-        confess $_ if m/^SERVER_ERROR/;
+        confess $_ if m/^(CLIENT|SERVER_)?ERROR/;
         $_ =~ s/[\r\n]+$//;
         push @response, $_;
     }
