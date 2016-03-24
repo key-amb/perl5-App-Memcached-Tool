@@ -20,7 +20,7 @@ our %EXPORT_TAGS = (all => \@EXPORT_OK);
 use App::Memcached::Tool;
 use App::Memcached::Tool::Constants ':all';
 
-use version; our $VERSION = 'v0.9.2';
+use version; our $VERSION = 'v0.9.3';
 
 sub looks_like_addr {
     my $string = shift;

@@ -3,7 +3,7 @@ use 5.008_001;
 use strict;
 use warnings;
 
-use version; our $VERSION = 'v0.9.2';
+use version; our $VERSION = 'v0.9.3';
 
 our $DEBUG; # set by option
 

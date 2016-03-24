@@ -12,7 +12,7 @@ use App::Memcached::Tool::Constants ':all';
 use App::Memcached::Tool::DataSource;
 use App::Memcached::Tool::Util ':all';
 
-use version; our $VERSION = 'v0.9.2';
+use version; our $VERSION = 'v0.9.3';
 
 sub new {
     my $class  = shift;
