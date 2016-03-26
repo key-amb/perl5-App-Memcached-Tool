@@ -186,9 +186,15 @@ sub dump {
             }
         }
 
-        for my $key (keys %expires) {
-            my $data = $self->{ds}->get($key);
-            print "add $key $data->{flags} $expires{$key} $data->{length}\r\n$data->{value}\r\n";
+        my $now = time();
+        my @keys_bucket = keys %expires;
+        while (my @keys = splice(@keys_bucket, 0, 20)) {
+            my $list = $self->{ds}->get(@keys);
+            for my $d (@$list) {
+                my $expire = ($expires{$d->{key}} < $now) ? 0 : $expires{$d->{key}};
+                print "add $d->{key} $d->{flags} $expire $d->{length}\r\n";
+                print "$d->{value}\r\n";
+            }
         }
     }
 

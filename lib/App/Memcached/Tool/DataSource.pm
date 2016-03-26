@@ -41,27 +41,34 @@ sub disconnect {
 
 sub get {
     my $self = shift;
-    my $key  = shift;
+    my @keys = @_;
 
-    my $socket = $self->{socket};
-    print $socket "get $key\r\n";
+    my $key_str = join(q{ }, @keys);
+    $self->{socket}->write("get $key_str\r\n");
 
-    my %data = (key => $key);
-    my $response = <$socket>;
-    if ($response =~ m/^VALUE \S+ (\d+) (\d+)/) {
-        $data{flags}  = $1;
-        $data{length} = $2;
-        read $socket, $response, $data{length};
-        $data{value} = $response;
+    my @results;
 
-        while ($response !~ m/^END/) { $response = <$socket>; }
-    } elsif ($response =~ m/^END/) {
-        warn qq{Item Not found for KEY "$key"};
-    } else {
-        warn qq{Unknown response for KEY "$key" - $response};
+    while (1) {
+        my $response = $self->{socket}->getline;
+        next if ($response =~ m/^[\r\n]+$/);
+        if ($response =~ m/^VALUE (\S+) (\d+) (\d+)(?: (\d+))?/) {
+            my %data = (
+                key    => $1,
+                flags  => $2,
+                length => $3,
+                cas    => $4,
+            );
+            $self->{socket}->read($response, $data{length});
+            $data{value} = $response;
+            push @results, \%data;
+        } elsif ($response =~ m/^END/) {
+            last;
+        } else {
+            warn "Unknown response '$response'";
+        }
     }
 
-    return \%data;
+    return \@results;
 }
 
 sub query {
