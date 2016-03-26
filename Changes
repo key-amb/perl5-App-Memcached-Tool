@@ -2,6 +2,11 @@ Revision history for Perl extension App-Memcached-Tool
 
 {{$NEXT}}
 
+v0.9.4 2016-03-26T08:53:38Z
+
+    - Fix Bug: in "dump_all" command, set expiration time 0 correctly for data
+      which never expires.
+
 v0.9.3 2016-03-24T15:50:47Z
 
     - Minor improve:
