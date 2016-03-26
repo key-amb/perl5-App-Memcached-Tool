@@ -75,11 +75,10 @@ sub query {
     my $self  = shift;
     my $query = shift;
 
-    my $socket = $self->{socket};
-    print $socket "$query\r\n";
+    $self->{socket}->write("$query\r\n");
 
     my @response;
-    while (<$socket>) {
+    while ($_ = $self->{socket}->getline) {
         last if m/^END/;
         confess $_ if m/^(CLIENT|SERVER_)?ERROR/;
         $_ =~ s/[\r\n]+$//;
